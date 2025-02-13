@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A surprise for you from Portia">
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Happy Valentine's Day! 💕">
+    <meta property="og:description" content="A special message of love from Someone Special! 💌">
+    <meta property="og:image" content="valentine.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
+
+    <script>
+        function updateMetaTags() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const senderName = urlParams.get("n") || "Someone Special"; 
+
+            document.querySelector('meta[property="og:description"]').setAttribute("content", `A special message of love from ${senderName}! 💌`);
+            document.querySelector('meta[property="og:url"]').setAttribute("content", `https://yourwebsite.com/?n=${encodeURIComponent(senderName)}`);
+
+            // Update display name
+            document.getElementById("displayName").innerText = `A special message of love from ${senderName}`;
+        }
+        window.onload = updateMetaTags;
+    </script>
+
+    <title>Valentine's Day</title>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Love+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Love+Light&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="image/heart cnfetti.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+
+    <!-- Headings (Outside the Card) -->
+    <div class="headings">
+        <h2 class="animate__animated animate__heartBeat" id="displayName">Sam</h2>
+        <h3>Wishing You</h3>
+        <h1 class="animate__animated animate__heartBeat" id="lve-font">💌 HAPPY Valentine's Day 💌</h1>
+    </div>
+
+    <!-- Message Card -->
+<div class="card" onclick="openCard()">
+    <div class="top-flap"><span class="open-btn">open</span></div>
+    <div class="bottom-flap"></div>
+    <p class="me">May your heart be filled with love, ❤️ <br>
+        Joy, laughter, and sweet moments. 💕 <br>
+        Wishing you a day as special as you are! 🌹
+    </p>
+    <h1 class="love">😍 [Your Name] 😘</h1>
+</div>
+
+
+    <!-- Name Input & Share Button (Outside the Card) -->
+    <div class="input-container">
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button onclick="generateLink()">Share</button>
+    </div>
+
+    <script>
+        function openCard() {
+    document.querySelector(".card").classList.toggle("open");
+}
+
+        function generateLink() {
+            let name = document.getElementById('nameInput').value.trim();
+            if (name === "") {
+                alert("Please enter your name");
+                return;
+            }
+            
+            let url = `https://yourwebsite.com/?n=${encodeURIComponent(name)}`;
+            let message = `🎉 ${name} is wishing you a Happy Valentine's Day! 🎊 Check it out: ${url}`;
+            let whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
