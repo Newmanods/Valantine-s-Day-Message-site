@@ -121,9 +121,6 @@ body {
     font-style: normal;
     font-size: x-large;
 }
-.love{
-    font-family:  serif;
-}
 .card.open .top-flap {
     transform: translateY(-100px);
 }
