@@ -72,16 +72,6 @@
     </div>
 
     <script>
-        function updateUserName() {
-    let params = new URLSearchParams(window.location.search);
-    let name = params.get("name");
-
-    if (name) {
-        document.querySelector(".love").innerHTML = `😍 ${decodeURIComponent(name)} 😘`;
-    }
-}
-updateUserName();
-
         function openCard() {
     document.querySelector(".card").classList.toggle("open");
 }
