@@ -86,28 +86,19 @@ updateUserName();
     document.querySelector(".card").classList.toggle("open");
 }
 
-function generateLink(platform) {
-    let name = document.getElementById('nameInput').value.trim();
-    if (name === "") {
-        alert("Please enter your name");
-        return;
-    }
-
-    let url = `https://yourwebsite.com/?n=${encodeURIComponent(name)}`;
-    let message = `🎉 ${name} is wishing you a Happy Valentine's Day! 🎊 Check it out: ${url}`;
-
-    let shareLinks = {
-        "whatsapp": `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`,
-        "facebook": `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-        "twitter": `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`,
-        "linkedin": `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-        "telegram": `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`,
-        "email": `mailto:?subject=Valentine's%20Day%20Message&body=${encodeURIComponent(message)}`
-    };
-
-    window.open(shareLinks[platform], '_blank');
-}
-
+        function generateLink() {
+            let name = document.getElementById('nameInput').value.trim();
+            if (name === "") {
+                alert("Please enter your name");
+                return;
+            }
+            
+            let url = `https://yourwebsite.com/?n=${encodeURIComponent(name)}`;
+            let message = `🎉 ${name} is wishing you a Happy Valentine's Day! 🎊 Check it out: ${url}`;
+            let whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
     </script>
 </body>
 </html>
