@@ -72,23 +72,39 @@
     </div>
 
     <script>
-        function openCard() {
-    document.querySelector(".card").classList.toggle("open");
+     function openCard() {
+    let card = document.querySelector(".card");
+    if (card) {
+        card.classList.toggle("open");
+    } else {
+        console.warn("Card element not found!");
+    }
 }
 
-        function generateLink() {
-            let name = document.getElementById('nameInput').value.trim();
-            if (name === "") {
-                alert("Please enter your name");
-                return;
-            }
-            
-            let url = `https://yourwebsite.com/?n=${encodeURIComponent(name)}`;
-            let message = `🎉 ${name} is wishing you a Happy Valentine's Day! 🎊 Check it out: ${url}`;
-            let whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
-            
-            window.open(whatsappUrl, '_blank');
-        }
+function generateLink() {
+    let nameInput = document.getElementById("nameInput");
+    if (!nameInput) {
+        alert("Input field not found!");
+        return;
+    }
+
+    let name = nameInput.value.trim();
+    if (name === "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    let url = `https://yourwebsite.com/?n=${encodeURIComponent(name)}`;
+    let message = `🎉 ${name} is wishing you a Happy Valentine's Day! 🎊 Check it out: ${url}`;
+
+    let isMobile = /iPhone|Android/i.test(navigator.userAgent);
+    let whatsappUrl = isMobile 
+        ? `https://wa.me/?text=${encodeURIComponent(message)}` 
+        : `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
+}
+
     </script>
 </body>
 </html>
