@@ -72,38 +72,23 @@
     </div>
 
     <script>
-    function openCard() {
-    let card = document.querySelector(".card");
-    if (card) {
-        card.classList.toggle("open");
-    } else {
-        console.warn("Card element not found!");
-    }
+        function openCard() {
+    document.querySelector(".card").classList.toggle("open");
 }
 
-function generateLink() {
-    let nameInput = document.getElementById("nameInput");
-    if (!nameInput) {
-        alert("Input field not found!");
-        return;
-    }
-
-    let name = nameInput.value.trim();
-    if (name === "") {
-        alert("Please enter your name");
-        return;
-    }
-
-    // Get the correct GitHub Pages URL dynamically
-    let baseUrl = window.location.origin;
-    let url = `${baseUrl}/?n=${encodeURIComponent(name)}`;
-    let message = `🎉 ${name} is wishing you a Happy Valentine's Day! 🎊 Check it out: ${url}`;
-
-    let whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    
-    window.open(whatsappUrl, "_blank");
-}
-
+        function generateLink() {
+            let name = document.getElementById('nameInput').value.trim();
+            if (name === "") {
+                alert("Please enter your name");
+                return;
+            }
+            
+            let url = `https://yourwebsite.com/?n=${encodeURIComponent(name)}`;
+            let message = `🎉 ${name} is wishing you a Happy Valentine's Day! 🎊 Check it out: ${url}`;
+            let whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
     </script>
 </body>
 </html>
